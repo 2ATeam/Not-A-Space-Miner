@@ -13,7 +13,7 @@ public class Config {
     public static int blockSize = 32;
     public static int mapWidth = 10;
     public static int mapHeight = 20;
-    public static String tilesetPath = "tilesets/tileset.png";
+    public static String tilesetPath = "data/tilesets/tileset.png";
 
     // available param indicators:
     private static final String PARAM_FS = "falling_speed";
