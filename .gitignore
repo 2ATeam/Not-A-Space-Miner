@@ -1,0 +1,25 @@
+# Android
+/android/gen
+/android/*.txt
+
+#Core
+/core/out
+
+
+# All Modules
+/*/build
+/*/.idea
+/*/libs
+/*/bin
+/*/*.gradle
+/*/*.properties
+
+# Root
+/gen
+/out
+/.idea
+*.iml
+*.eml
+/*.gradle
+/*.properties
+/gradlew*
