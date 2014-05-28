@@ -1,2 +1,2 @@
-Space-Miner
+Space Miner
 ===========
