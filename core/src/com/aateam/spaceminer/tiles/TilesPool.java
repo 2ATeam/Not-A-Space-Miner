@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.tiles;
 
 import com.aateam.spaceminer.game.Materials;
-import com.aateam.spaceminer.utils.Config;
+import com.aateam.spaceminer.preferences.Config;
 import com.badlogic.gdx.graphics.Texture;
 
 public final class TilesPool {

@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.desktop;
 
 import com.aateam.spaceminer.core.STGame;
-import com.aateam.spaceminer.utils.Config;
+import com.aateam.spaceminer.preferences.Config;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 

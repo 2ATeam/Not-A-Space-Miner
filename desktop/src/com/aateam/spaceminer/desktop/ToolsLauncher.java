@@ -1,6 +1,6 @@
 package com.aateam.spaceminer.desktop;
 
-import com.aateam.spaceminer.utils.Config;
+import com.aateam.spaceminer.preferences.Config;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 
 public class ToolsLauncher {

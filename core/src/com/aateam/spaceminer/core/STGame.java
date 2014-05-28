@@ -4,7 +4,7 @@ import com.aateam.spaceminer.game.Directions;
 import com.aateam.spaceminer.game.STController;
 import com.aateam.spaceminer.game.STetris;
 import com.aateam.spaceminer.game.TileMap;
-import com.aateam.spaceminer.utils.Config;
+import com.aateam.spaceminer.preferences.Config;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -24,6 +24,7 @@ public class STGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
         tetris = new STetris();
         controller = tetris.getGameController();
+        Config.load();
 	}
 
 	@Override

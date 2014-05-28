@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.game;
 
 
-import com.aateam.spaceminer.utils.Config;
+import com.aateam.spaceminer.preferences.Config;
 
 public class Stats {
 

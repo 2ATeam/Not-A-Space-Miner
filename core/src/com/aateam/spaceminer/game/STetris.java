@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.game;
 
 import com.aateam.spaceminer.tiles.TileTypes;
-import com.aateam.spaceminer.utils.Config;
+import com.aateam.spaceminer.preferences.Config;
 
 import java.util.Observable;
 
