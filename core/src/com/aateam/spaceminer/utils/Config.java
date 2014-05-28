@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.utils;
 
 public class Config {
-    /// TODO: Rewrite config for android
+    /// TODO: Rewrite config
 
    // private static Path configPath = Paths.get("config.cfg");
 
