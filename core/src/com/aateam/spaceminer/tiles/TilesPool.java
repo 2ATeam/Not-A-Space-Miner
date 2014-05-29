@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.tiles;
 
 import com.aateam.spaceminer.game.Materials;
-import com.aateam.spaceminer.preferences.Config;
+import com.aateam.spaceminer.preferences.GameConfig;
 import com.badlogic.gdx.graphics.Texture;
 
 public final class TilesPool {
@@ -36,7 +36,7 @@ public final class TilesPool {
 
     private Texture getChunkAt(Materials material) {
         /// TODO: rewrite this using tilesets and libGDX
-        return new Texture(Config.tilesetPath);
+        return new Texture(GameConfig.getInstance().tilesetPath);
     }
 
     public Tile getTile(Materials materialType) {

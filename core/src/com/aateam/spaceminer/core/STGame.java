@@ -4,7 +4,7 @@ import com.aateam.spaceminer.game.Directions;
 import com.aateam.spaceminer.game.STController;
 import com.aateam.spaceminer.game.STetris;
 import com.aateam.spaceminer.game.TileMap;
-import com.aateam.spaceminer.preferences.Config;
+import com.aateam.spaceminer.preferences.GameConfig;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -18,13 +18,11 @@ public class STGame extends ApplicationAdapter {
     private STetris tetris;
     private STController controller;
 
-
-	@Override
+    @Override
 	public void create () {
 		batch = new SpriteBatch();
         tetris = new STetris();
         controller = tetris.getGameController();
-        Config.load();
 	}
 
 	@Override
@@ -65,15 +63,30 @@ public class STGame extends ApplicationAdapter {
 
     private void drawField(){
         TileMap map = tetris.getMap();
-        /// TODO: Main painting goes here
         batch.begin();
         for (int i = 0; i < map.getRowsAmount(); i++) {
             for (int j = 0; j < map.getCollsAmount(); j++) {
                 batch.draw(map.getTile(i, j).getTexture(),
-                        j * Config.blockSize + mapOffset,
-                        i * Config.blockSize + mapOffset);
+                        j * GameConfig.getInstance().blockSize + mapOffset,
+                        i * GameConfig.getInstance().blockSize + mapOffset);
             }
         }
         batch.end();
+    }
+
+
+    @Override
+    public void dispose() {
+        super.dispose();
+    }
+
+    @Override
+    public void pause() {
+        super.pause();
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
     }
 }

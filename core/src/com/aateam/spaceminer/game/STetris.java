@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.game;
 
+import com.aateam.spaceminer.preferences.GameConfig;
 import com.aateam.spaceminer.tiles.TileTypes;
-import com.aateam.spaceminer.preferences.Config;
 
 import java.util.Observable;
 
@@ -19,7 +19,7 @@ public class STetris extends Observable {
     private boolean isLoosed = false;
 
     public STetris() {
-        map = new TileMap(Config.mapHeight, Config.mapWidth);
+        map = new TileMap(GameConfig.getInstance().mapHeight, GameConfig.getInstance().mapWidth);
         nextFigureMap = new TileMap(4, 5);
         gameController = new STController(map);
         playerStats = new Stats(); // default.
