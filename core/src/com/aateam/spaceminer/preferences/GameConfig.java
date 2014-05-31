@@ -1,6 +1,6 @@
 package com.aateam.spaceminer.preferences;
 
-public class GameConfig extends Configuraion {
+public class GameConfig extends Configuration {
 
     private static GameConfig instance;
     public static GameConfig getInstance() {

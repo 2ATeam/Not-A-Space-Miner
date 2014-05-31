@@ -3,9 +3,9 @@ package com.aateam.spaceminer.preferences;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
-public abstract class Configuraion {
+public abstract class Configuration {
 
-    public Configuraion() {
+    public Configuration() {
         restoreDefaults();
     }
 
