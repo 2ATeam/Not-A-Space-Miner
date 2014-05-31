@@ -7,18 +7,14 @@ public abstract class Configuraion {
 
     public Configuraion() {
         restoreDefaults();
-        load();
     }
 
     /** Returns filename of the configuration file. */
     public abstract String getPrefsFileName();
 
-    /** Returns directory path to the configuration file. */
-    public String getPrefsDir() {return "configs//";}
-
     /** Returns full path to the prefs file. */
     protected final String getPrefsPath(){
-        return getPrefsDir() + getPrefsFileName();
+        return getPrefsFileName();
     }
 
     /** Accessor for preference object. */
