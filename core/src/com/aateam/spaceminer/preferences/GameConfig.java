@@ -1,6 +1,6 @@
 package com.aateam.spaceminer.preferences;
 
-public class GameConfig extends Configuraion {
+public class GameConfig extends Configuration {
 
     private static GameConfig instance;
     public static GameConfig getInstance() {
@@ -69,6 +69,4 @@ public class GameConfig extends Configuraion {
         mapHeight = get(PARAM_MH, mapHeight);
         tilesetPath = get(PARAM_TP, tilesetPath);
     }
-
-
 }

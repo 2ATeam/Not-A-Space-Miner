@@ -1,9 +1,11 @@
 package com.aateam.spaceminer.game;
 
-import android.graphics.Point;
 import com.aateam.spaceminer.tiles.Tile;
 import com.aateam.spaceminer.tiles.TileTypes;
 import com.aateam.spaceminer.tiles.TilesPool;
+
+import java.awt.*;
+
 
 public class STController {
 
@@ -96,19 +98,19 @@ public class STController {
 
         switch (direction) {
             case UP: {
-                curFigurePos.set(curX, curY - 1);
+                curFigurePos.setLocation(curX, curY - 1);
                 break;
             }
             case DOWN: {
-                curFigurePos.set(curX, curY + 1);
+                curFigurePos.setLocation(curX, curY + 1);
                 break;
             }
             case LEFT: {
-                curFigurePos.set(curX - 1, curY);
+                curFigurePos.setLocation(curX - 1, curY);
                 break;
             }
             case RIGHT: {
-                curFigurePos.set(curX + 1, curY);
+                curFigurePos.setLocation(curX + 1, curY);
                 break;
             }
         }

@@ -3,11 +3,11 @@ package com.aateam.spaceminer.preferences;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
-public abstract class Configuraion {
+public abstract class Configuration {
 
-    public Configuraion() {
+    public Configuration() {
         restoreDefaults();
-        load();
+        //load();
     }
 
     /** Returns filename of the configuration file. */
@@ -23,7 +23,7 @@ public abstract class Configuraion {
 
     /** Accessor for preference object. */
     private Preferences getPreferences(){
-        return Gdx.app.getPreferences(getPrefsPath());
+        return Gdx.app.getPreferences(getPrefsFileName());
     }
 
     /** Saves all changes to the configuration file. */
