@@ -1,7 +1,10 @@
 package com.aateam.spaceminer.game;
 
 
+import com.aateam.spaceminer.bonus.BonusTypes;
+import com.aateam.spaceminer.tiles.BlockMaterials;
 import com.aateam.spaceminer.tiles.Tile;
+import com.aateam.spaceminer.tiles.TileTypes;
 import com.aateam.spaceminer.tiles.TilesPool;
 
 public class Figure {
@@ -18,68 +21,68 @@ public class Figure {
         switch (type) {
             case L_SHAPE: {
                 figure = new Figure(3, 2);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.L_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.L_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.L_MATERIAL)},
-                                          { TilesPool.getInstance().getTile(Materials.L_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.L_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.L_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.L_MATERIAL)},
+                                          { TilesPool.getInstance().getTile(BlockMaterials.L_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL)}};
                 break;
             }
             case J_SHAPE: {
                 figure = new Figure(3, 2);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.J_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL)},
-                                          { TilesPool.getInstance().getTile(Materials.J_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.J_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.J_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.J_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL)},
+                                          { TilesPool.getInstance().getTile(BlockMaterials.J_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.J_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.J_MATERIAL)}};
                 break;
             }
             case Z_SHAPE: {
                 figure = new Figure(3, 2);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.Z_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.Z_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL)},
-                                          { TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.Z_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.Z_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.Z_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.Z_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL)},
+                                          { TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.Z_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.Z_MATERIAL)}};
                 break;
             }
             case S_SHAPE: {
                 figure = new Figure(3, 2);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL),
-                                           TilesPool.getInstance().getTile(Materials.S_MATERIAL),
-                                           TilesPool.getInstance().getTile(Materials.S_MATERIAL)},
-                                         { TilesPool.getInstance().getTile(Materials.S_MATERIAL),
-                                           TilesPool.getInstance().getTile(Materials.S_MATERIAL),
-                                           TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL),
+                                           TilesPool.getInstance().getTile(BlockMaterials.S_MATERIAL),
+                                           TilesPool.getInstance().getTile(BlockMaterials.S_MATERIAL)},
+                                         { TilesPool.getInstance().getTile(BlockMaterials.S_MATERIAL),
+                                           TilesPool.getInstance().getTile(BlockMaterials.S_MATERIAL),
+                                           TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL)}};
                 break;
             }
             case T_SHAPE: {
                 figure = new Figure(3, 2);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.T_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL)},
-                                          { TilesPool.getInstance().getTile(Materials.T_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.T_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.T_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.T_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL)},
+                                          { TilesPool.getInstance().getTile(BlockMaterials.T_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.T_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.T_MATERIAL)}};
                 break;
             }
             case O_SHAPE: {
                 figure = new Figure(2, 2);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.O_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.O_MATERIAL)},
-                                          { TilesPool.getInstance().getTile(Materials.O_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.O_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.O_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.O_MATERIAL)},
+                                          { TilesPool.getInstance().getTile(BlockMaterials.O_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.O_MATERIAL)}};
                 break;
             }
             case I_SHAPE: {
                 figure = new Figure(4, 1);
-                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(Materials.I_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.I_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.I_MATERIAL),
-                                            TilesPool.getInstance().getTile(Materials.I_MATERIAL)}};
+                figure.mask = new Tile[][]{{TilesPool.getInstance().getTile(BlockMaterials.I_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.I_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.I_MATERIAL),
+                                            TilesPool.getInstance().getTile(BlockMaterials.I_MATERIAL)}};
                 break;
             }
         }
@@ -113,6 +116,12 @@ public class Figure {
 
     public Tile[][] getMask() {
         return mask;
+    }
+
+    private void setBonusAt(int x, int y, BonusTypes bonusType){
+        if ((x < 0 || x >= rows) || (y < 0 || y >=columns)) throw new IndexOutOfBoundsException("Out of mask's bounds in setBonusAt() method.");
+        if (mask[x][y].getType() == TileTypes.FREE) throw new IllegalStateException("Could not set bonus on free tile.");
+        mask[x][y].setBonus(bonusType);
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.aateam.spaceminer.game;
+package com.aateam.spaceminer.tiles;
 
-public enum Materials {
+public enum BlockMaterials implements Materials{
     L_MATERIAL,
     J_MATERIAL,
     Z_MATERIAL,
