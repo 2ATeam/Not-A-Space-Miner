@@ -1,6 +1,7 @@
 package com.aateam.spaceminer.game;
 
 
+import com.aateam.spaceminer.tiles.BlockMaterials;
 import com.aateam.spaceminer.tiles.Tile;
 import com.aateam.spaceminer.tiles.TilesPool;
 
@@ -23,7 +24,7 @@ public class TileMap {
         for (int i = 0; i < rowsAmount; i++) {
             map.add(i, new Tile[collsAmount]);
             for (int j = 0; j < collsAmount; j++) {
-                map.get(i)[j] = TilesPool.getInstance().getTile(Materials.TRANSPARENT_MATERIAL);
+                map.get(i)[j] = TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL);
             }
         }
     }
