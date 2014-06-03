@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Tile {
 
-    Texture image;
+    Texture texture;
     TileTypes mapBlockType;
 
     public Tile(Texture image, TileTypes type) {
-        this.image = image;
+        this.texture = image;
         this.mapBlockType = type;
     }
 
@@ -18,7 +18,7 @@ public class Tile {
     }
 
     public Texture getTexture() {
-        return image;
+        return texture;
     }
 
     public TileTypes getType() {
