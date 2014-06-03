@@ -2,11 +2,14 @@ package com.aateam.spaceminer.tiles;
 
 import com.aateam.spaceminer.game.Materials;
 import com.aateam.spaceminer.preferences.GameConfig;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public final class TilesPool {
 
     private static TilesPool instance;
+    private Tile[] tilePool;
+
     public static TilesPool getInstance() {
         if (instance == null)
             instance = new TilesPool();
@@ -14,15 +17,11 @@ public final class TilesPool {
         return instance;
     }
 
-    private Tile[] tilePool;
-
-    public TilesPool() {
+    private TilesPool() {
         fillTilePool();
     }
 
     private void fillTilePool() {
-
-
         tilePool = new Tile[Materials.values().length];
         tilePool[Materials.L_MATERIAL.ordinal()] = new Tile(getChunkAt(Materials.L_MATERIAL), TileTypes.BLOCK);
         tilePool[Materials.J_MATERIAL.ordinal()] = new Tile(getChunkAt(Materials.J_MATERIAL), TileTypes.BLOCK);
@@ -36,7 +35,7 @@ public final class TilesPool {
 
     private Texture getChunkAt(Materials material) {
         /// TODO: rewrite this using tilesets and libGDX
-        return new Texture(GameConfig.getInstance().tilesetPath);
+        return new Texture(Gdx.files.internal(GameConfig.getInstance().tilesetPath));
     }
 
     public Tile getTile(Materials materialType) {

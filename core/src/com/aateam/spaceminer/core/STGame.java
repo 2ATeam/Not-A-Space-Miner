@@ -5,15 +5,15 @@ import com.aateam.spaceminer.game.STController;
 import com.aateam.spaceminer.game.STetris;
 import com.aateam.spaceminer.game.TileMap;
 import com.aateam.spaceminer.preferences.GameConfig;
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class STGame extends ApplicationAdapter {
-	SpriteBatch batch;
+public class STGame extends Game {
 
+	SpriteBatch batch;
     private int mapOffset = 10;
     private STetris tetris;
     private STController controller;

@@ -2,21 +2,28 @@ package com.aateam.spaceminer.game;
 
 import com.aateam.spaceminer.preferences.GameConfig;
 import com.aateam.spaceminer.tiles.TileTypes;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Observable;
 
 
 public class STetris extends Observable {
+    // deprecated
+        private TileMap map;
+        private TileMap nextFigureMap;
+        private STController gameController;
+        //private GameField gameField;
+        //private Stats playerStats;
+        private Figure currentFigure;
+        private Figure nextFigure;
+        private boolean isStuck = false;
+        private boolean isLoosed = false;
+    //
 
-    private TileMap map;
-    private TileMap nextFigureMap;
-    private STController gameController;
-    //private GameField gameField;
-    private Stats playerStats;
-    private Figure currentFigure;
-    private Figure nextFigure;
-    private boolean isStuck = false;
-    private boolean isLoosed = false;
+    public SpriteBatch batch;
+    public static final int W = 1280;
+    public static final int H = 960;
+    public Stats playerStats;
 
     public STetris() {
         map = new TileMap(GameConfig.getInstance().mapHeight, GameConfig.getInstance().mapWidth);
