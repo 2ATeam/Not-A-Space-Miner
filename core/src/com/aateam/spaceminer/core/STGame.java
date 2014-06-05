@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class STGame extends Game {
 
 	public SpriteBatch batch;
-    private GameScreen tetris;
+    private GameScreen gameScreen;
     public Stats playerStats;
 
     public final int W = 1280;
@@ -17,8 +17,8 @@ public class STGame extends Game {
     @Override
 	public void create () {
 		batch = new SpriteBatch();
-        tetris = new GameScreen(this);
-        setScreen(tetris);
+        gameScreen = new GameScreen(this);
+        setScreen(gameScreen);
 	}
 
     @Override

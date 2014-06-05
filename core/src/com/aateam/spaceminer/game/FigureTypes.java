@@ -11,7 +11,7 @@ public enum FigureTypes {
     O_SHAPE,
     I_SHAPE;
 
-    private static Random rnd = new Random(System.currentTimeMillis());
+    private static final Random rnd = new Random(System.currentTimeMillis());
 
     public static FigureTypes getRandom() {
         int index = rnd.nextInt(values().length);

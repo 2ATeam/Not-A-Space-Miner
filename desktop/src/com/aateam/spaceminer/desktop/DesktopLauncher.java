@@ -9,6 +9,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Space Miner";
+        config.useGL20 = true;
         config.width = GameConfig.getInstance().mapWidth *  GameConfig.getInstance().blockSize;
         config.height = GameConfig.getInstance().mapHeight *  GameConfig.getInstance().blockSize;
 		new LwjglApplication(new STGame(), config);

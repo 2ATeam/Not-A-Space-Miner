@@ -2,18 +2,17 @@ package com.aateam.spaceminer.tiles;
 
 import com.aateam.spaceminer.bonus.Bonus;
 import com.aateam.spaceminer.bonus.BonusTypes;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 
 public class Tile {
 
-    private Texture image;
+    private TextureRegion image;
     private Bonus bonus;
-
     TileTypes tileType;
 
-    public Tile(Texture image, TileTypes type) {
+    public Tile(TextureRegion image, TileTypes type) {
         this.image = image;
         this.tileType = type;
     }
@@ -22,7 +21,7 @@ public class Tile {
         this(null, type);
     }
 
-    public Texture getTexture() {
+    public TextureRegion getTexture() {
         return image;
     }
 

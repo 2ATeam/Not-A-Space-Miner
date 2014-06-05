@@ -39,9 +39,9 @@ public class GameConfig extends Configuration {
         speedIncrement = 100F;
         levelScoreLimit = 500L;
         lineCost = 100L;
-        blockSize = 32;
-        mapWidth = 10;
-        mapHeight = 20;
+        blockSize = 64;
+        mapWidth = 5;
+        mapHeight = 10;
         tilesetPath = "data/tilesets/tileset.png";
     }
 
