@@ -3,8 +3,9 @@ package com.aateam.spaceminer.tiles;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Disposable;
 
-public final class TilesPool {
+public final class TilesPool implements Disposable {
 
     private static TilesPool instance;
     private Texture texture;
@@ -67,5 +68,10 @@ public final class TilesPool {
 
     public Tile getTile(Materials materialType) {
         return tilePool[getIndex(materialType)];
+    }
+
+    @Override
+    public void dispose(){
+        texture.dispose();
     }
 }

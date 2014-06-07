@@ -2,6 +2,7 @@ package com.aateam.spaceminer.core;
 
 import com.aateam.spaceminer.game.Stats;
 import com.aateam.spaceminer.game.screens.GameScreen;
+import com.aateam.spaceminer.tiles.TilesPool;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -11,8 +12,9 @@ public class STGame extends Game {
     private GameScreen gameScreen;
     public Stats playerStats;
 
-    public final int W = 1280;
-    public final int H = 960;
+    public static final int WIDTH = 640;
+    public static final int HEIGHT = 480;
+    public static final float ASPECT_RATIO = (float)WIDTH / (float)HEIGHT;
 
     @Override
 	public void create () {
@@ -25,6 +27,7 @@ public class STGame extends Game {
     public void dispose() {
         super.dispose();
         batch.dispose();
+        TilesPool.getInstance().dispose();
     }
 
     @Override
@@ -35,5 +38,10 @@ public class STGame extends Game {
     @Override
     public void resume() {
         super.resume();
+    }
+
+    @Override
+    public void render() {
+        super.render();
     }
 }

@@ -79,7 +79,7 @@ public class STController {
     }
 
     /**
-     * Fills specified map with transparent material com.aateam.spaceminer.tiles
+     * Fills specified map with transparent material tiles
      * @param map map to clear
      *
      * NOTE: may be changed to "fillMap(TileMap map, Tile tile)" in future.
