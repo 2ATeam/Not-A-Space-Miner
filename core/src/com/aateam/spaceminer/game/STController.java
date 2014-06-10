@@ -4,15 +4,13 @@ import com.aateam.spaceminer.tiles.BlockMaterials;
 import com.aateam.spaceminer.tiles.Tile;
 import com.aateam.spaceminer.tiles.TileTypes;
 import com.aateam.spaceminer.tiles.TilesPool;
-
-import java.awt.*;
-
+import com.aateam.spaceminer.utils._2APoint;
 
 public class STController {
 
     private TileMap map;
     private Figure currentFigure;
-    private Point curFigurePos;
+    private _2APoint curFigurePos;
 
     public STController(TileMap map) {
         this.map = map;
@@ -20,7 +18,7 @@ public class STController {
 
     public void addFigure(Figure figure) {
         currentFigure = figure;
-        curFigurePos = new Point(map.getCollsAmount() / 2, 1);
+        curFigurePos = new _2APoint(map.getCollsAmount() / 2, map.getRowsAmount());
         projectFigure();
     }
 
@@ -99,19 +97,19 @@ public class STController {
 
         switch (direction) {
             case UP: {
-                curFigurePos.setLocation(curX, curY - 1);
+                curFigurePos.set(curX, curY + 1);
                 break;
             }
             case DOWN: {
-                curFigurePos.setLocation(curX, curY + 1);
+                curFigurePos.set(curX, curY - 1);
                 break;
             }
             case LEFT: {
-                curFigurePos.setLocation(curX - 1, curY);
+                curFigurePos.set(curX - 1, curY);
                 break;
             }
             case RIGHT: {
-                curFigurePos.setLocation(curX + 1, curY);
+                curFigurePos.set(curX + 1, curY);
                 break;
             }
         }
@@ -147,8 +145,10 @@ public class STController {
     }
 
     public boolean willOverlap(Directions direction) {
-        assert currentFigure != null;
-        Point curPos = new Point(curFigurePos);
+        if (curFigurePos == null)
+            return true;
+
+        _2APoint curPos = new _2APoint(curFigurePos);
         boolean isOverlapping;
         fillMaskRegion(TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL));
         translateFigurePos(direction);

@@ -16,7 +16,7 @@ public class GameConfig extends Configuration {
     public int blockSize;
     public int mapWidth;
     public int mapHeight;
-    public String tilesetPath = "tilesets/tileset.png";
+    public String tilesetPath = "tilesets/tileset2.png";
 
     // available param keys:
     private static final String PARAM_FS = "falling_speed";
@@ -42,7 +42,7 @@ public class GameConfig extends Configuration {
         blockSize = 64;
         mapWidth = 6;
         mapHeight = 12;
-        tilesetPath = "data/tilesets/tileset.png";
+        tilesetPath = "data/tilesets/tileset2.png";
     }
 
     @Override

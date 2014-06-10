@@ -13,14 +13,17 @@ public class STGame extends Game {
     private GameScreen gameScreen;
     public Stats playerStats;
 
+    //virtual dimensions:
     public static final int WIDTH = GameConfig.getInstance().blockSize * GameConfig.getInstance().mapWidth;
     public static final int HEIGHT = GameConfig.getInstance().blockSize * GameConfig.getInstance().mapHeight;
     public static final float ASPECT_RATIO = (float)WIDTH / (float)HEIGHT;
+    //
 
     @Override
 	public void create () {
 		batch = new SpriteBatch();
         gameScreen = new GameScreen(this);
+        playerStats = new Stats();
         setScreen(gameScreen);
 	}
 

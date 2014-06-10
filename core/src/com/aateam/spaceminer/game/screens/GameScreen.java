@@ -25,6 +25,7 @@ public class GameScreen extends Observable implements Screen {
     private STController gameController;
     private Figure currentFigure;
     private Figure nextFigure;
+    private long lastDropTime;
     private boolean isStuck = false;
     private boolean isLoosed = false;
 
@@ -37,9 +38,19 @@ public class GameScreen extends Observable implements Screen {
         nextFigureMap = new TileMap(4, 5);
         gameController = new STController(map);
         nextFigure = Figure.createFigure(FigureTypes.getRandom());
+        lastDropTime = System.currentTimeMillis();
+        spawnFigure();
     }
 
     private void processKeyboardInput(){
+
+
+
+        if (Gdx.input.getDeltaX() >= 70){
+            Gdx.app.log("INPUT", "MOVE!");
+        }
+
+
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
             if (!gameController.willOverlap(Directions.LEFT))
                  gameController.moveFigure(Directions.LEFT);
@@ -60,44 +71,12 @@ public class GameScreen extends Observable implements Screen {
             }
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-            if(gameController.willRotate(true)) {
+            if (gameController.willRotate(true)) {
                 gameController.rotate(true);
             }
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-             spawnFigure(); /// TODO: test. remove later.
-        }
-    }
-
-    public void mainLoop() {
-        long lastDropTime = System.currentTimeMillis();
-        spawnFigure();
-        gameController.projectFigure(nextFigureMap, nextFigure, 1, 2);
-
-        while (!isLoosed) {
-            if (System.currentTimeMillis() - lastDropTime > game.playerStats.getSpeed()) {
-                lastDropTime = System.currentTimeMillis();
-                tick();
-            }
-        }
-    }
-
-    private void tick() {
-        if(!gameController.willOverlap(Directions.DOWN)) {
-            gameController.moveFigure(Directions.DOWN);
-            isStuck = false;
-        }
-        else if(isStuck) {
-            gameOver();
-        }
-        else{
-            checkLines();
             spawnFigure();
-            gameController.clearMap(nextFigureMap);
-            gameController.projectFigure(nextFigureMap, nextFigure, 1, 2);
-            isStuck = true;
-            setChanged();
-            notifyObservers();
         }
     }
 
@@ -142,7 +121,37 @@ public class GameScreen extends Observable implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.setProjectionMatrix(camera.combined);
         processKeyboardInput();
+        update();
         drawField();
+    }
+
+    public void update() {
+        if (isLoosed)
+            return;
+
+        if (System.currentTimeMillis() - lastDropTime > game.playerStats.getSpeed()) {
+            lastDropTime = System.currentTimeMillis();
+            tick();
+        }
+    }
+
+    private void tick() {
+        if(!gameController.willOverlap(Directions.DOWN)) {
+            gameController.moveFigure(Directions.DOWN);
+            isStuck = false;
+        }
+        else if(isStuck) {
+            gameOver();
+        }
+        else{
+            checkLines();
+            spawnFigure();
+            gameController.clearMap(nextFigureMap);
+            gameController.projectFigure(nextFigureMap, nextFigure, 1, 2);
+            isStuck = true;
+            setChanged();
+            notifyObservers();
+        }
     }
 
     private void drawField(){
@@ -156,7 +165,6 @@ public class GameScreen extends Observable implements Screen {
                         GameConfig.getInstance().blockSize);
             }
         }
-       // game.batch.draw(map.getTile(0, 0).getTexture(), 0, 0);
         game.batch.end();
     }
 

@@ -14,7 +14,6 @@ public class Stats {
         this.level = level;
         this.speed = speed;
         multiplier = 1;
-   //     test(30);
     }
 
 
@@ -27,9 +26,9 @@ public class Stats {
         if (score - GameConfig.getInstance().levelScoreLimit * Math.exp(level) >= 0)
             levelUp();
 
-        score += (clearedLines * GameConfig.getInstance().lineCost) + GameConfig.getInstance().lineCost * multiplier;
-        if (score - GameConfig.getInstance().levelScoreLimit * level >= 0)
-            levelUp();
+//        score += (clearedLines * GameConfig.getInstance().lineCost) + GameConfig.getInstance().lineCost * multiplier;
+//        if (score - GameConfig.getInstance().levelScoreLimit * level >= 0)
+//            levelUp();
     }
 
     private void levelUp() {
