@@ -40,8 +40,8 @@ public class GameConfig extends Configuration {
         levelScoreLimit = 500L;
         lineCost = 100L;
         blockSize = 64;
-        mapWidth = 5;
-        mapHeight = 10;
+        mapWidth = 6;
+        mapHeight = 12;
         tilesetPath = "data/tilesets/tileset.png";
     }
 

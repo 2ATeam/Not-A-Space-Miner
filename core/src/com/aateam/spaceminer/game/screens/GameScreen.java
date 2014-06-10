@@ -151,9 +151,12 @@ public class GameScreen extends Observable implements Screen {
             for (int j = 0; j < map.getCollsAmount(); j++) {
                 game.batch.draw(map.getTile(i, j).getTexture(),
                         j * GameConfig.getInstance().blockSize,
-                        i * GameConfig.getInstance().blockSize);
+                        i * GameConfig.getInstance().blockSize,
+                        GameConfig.getInstance().blockSize,
+                        GameConfig.getInstance().blockSize);
             }
         }
+       // game.batch.draw(map.getTile(0, 0).getTexture(), 0, 0);
         game.batch.end();
     }
 
