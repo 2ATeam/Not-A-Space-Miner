@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 import java.util.Observable;
 
@@ -26,6 +27,7 @@ public class GameScreen extends Observable implements Screen {
     private Figure currentFigure;
     private Figure nextFigure;
     private long lastDropTime;
+    private Vector3 touchPosition;
     private boolean isStuck = false;
     private boolean isLoosed = false;
 
@@ -37,20 +39,13 @@ public class GameScreen extends Observable implements Screen {
         map = new TileMap(GameConfig.getInstance().mapHeight, GameConfig.getInstance().mapWidth);
         nextFigureMap = new TileMap(4, 5);
         gameController = new STController(map);
+        touchPosition = new Vector3();
         nextFigure = Figure.createFigure(FigureTypes.getRandom());
         lastDropTime = System.currentTimeMillis();
         spawnFigure();
     }
 
     private void processKeyboardInput(){
-
-
-
-        if (Gdx.input.getDeltaX() >= 70){
-            Gdx.app.log("INPUT", "MOVE!");
-        }
-
-
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
             if (!gameController.willOverlap(Directions.LEFT))
                  gameController.moveFigure(Directions.LEFT);
@@ -77,6 +72,15 @@ public class GameScreen extends Observable implements Screen {
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.ENTER)){
             spawnFigure();
+        }
+    }
+
+    private void processTouchInput() {
+        if (Gdx.input.isTouched()) {
+            touchPosition.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+            camera.unproject(touchPosition);
+            final int scaledX = (int) (touchPosition.x / GameConfig.getInstance().blockSize);
+            gameController.moveFigureTo(scaledX, gameController.getCurFigurePos().y);
         }
     }
 
@@ -120,7 +124,6 @@ public class GameScreen extends Observable implements Screen {
         Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.setProjectionMatrix(camera.combined);
-        processKeyboardInput();
         update();
         drawField();
     }
@@ -128,6 +131,8 @@ public class GameScreen extends Observable implements Screen {
     public void update() {
         if (isLoosed)
             return;
+
+        processTouchInput();
 
         if (System.currentTimeMillis() - lastDropTime > game.playerStats.getSpeed()) {
             lastDropTime = System.currentTimeMillis();

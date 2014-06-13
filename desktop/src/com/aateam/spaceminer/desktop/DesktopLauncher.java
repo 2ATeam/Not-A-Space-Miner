@@ -11,6 +11,7 @@ public class DesktopLauncher {
         config.useGL20 = true;
         config.width = STGame.WIDTH;
         config.height = STGame.HEIGHT;
+        config.resizable = false;
         new LwjglApplication(new STGame(), config);
     }
 }

@@ -1,5 +1,6 @@
 package com.aateam.spaceminer.tiles;
 
+import com.aateam.spaceminer.preferences.GameConfig;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -20,7 +21,7 @@ public final class TilesPool implements Disposable {
     }
 
     private TilesPool() {
-        texture = new Texture(Gdx.files.internal("tilesets/tileset.png"));
+        texture = new Texture(Gdx.files.internal(GameConfig.getInstance().tilesetPath));
         refresh();
     }
 
@@ -49,7 +50,7 @@ public final class TilesPool implements Disposable {
         sprites = new TextureRegion[rows * columns];
         for( int i = 0; i < rows; i++){
             for( int j = 0; j < columns; j++) {
-                sprites[index++] = new TextureRegion(texture, i * blockSize, j * blockSize, blockSize, blockSize);
+                sprites[index++] = new TextureRegion(texture, j * blockSize, i * blockSize, blockSize, blockSize);
             }
         }
     }

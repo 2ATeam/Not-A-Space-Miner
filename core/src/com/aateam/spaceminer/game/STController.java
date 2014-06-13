@@ -121,6 +121,13 @@ public class STController {
         projectFigure();
     }
 
+    public void moveFigureTo(int x, int y) {
+        if (currentFigure == null) return;
+        fillMaskRegion(TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL));
+        curFigurePos.set(x, y);
+        projectFigure();
+    }
+
     public boolean isOverlapping() {
         assert currentFigure != null : "curFigure is null";
         int projectedX;
@@ -145,13 +152,25 @@ public class STController {
     }
 
     public boolean willOverlap(Directions direction) {
-        if (curFigurePos == null)
-            return true;
+        if (curFigurePos == null) return true;
 
         _2APoint curPos = new _2APoint(curFigurePos);
         boolean isOverlapping;
         fillMaskRegion(TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL));
         translateFigurePos(direction);
+        isOverlapping = isOverlapping();
+        curFigurePos = curPos;
+        projectFigure();
+        return isOverlapping;
+    }
+
+    public boolean willOverlap(int x, int y) {
+        if (curFigurePos == null) return true;
+
+        _2APoint curPos = new _2APoint(curFigurePos);
+        boolean isOverlapping;
+        fillMaskRegion(TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL));
+        moveFigureTo(x, y);
         isOverlapping = isOverlapping();
         curFigurePos = curPos;
         projectFigure();
@@ -192,7 +211,15 @@ public class STController {
         map.addRow(TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL));
     }
 
-/** UTILS */
+    public Figure getCurrentFigure() {
+        return currentFigure;
+    }
+
+    public _2APoint getCurFigurePos() {
+        return curFigurePos;
+    }
+
+    /** UTILS */
     private boolean isWithin(int min, int value, int max, boolean inclusive){
         if (inclusive)
             return (min <= value && value <= max);
