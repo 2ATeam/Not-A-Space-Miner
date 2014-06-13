@@ -2,13 +2,14 @@ package com.aateam.spaceminer.game.screens;
 
 import com.aateam.spaceminer.core.STGame;
 import com.aateam.spaceminer.game.*;
+import com.aateam.spaceminer.game.input.STGestureListener;
 import com.aateam.spaceminer.preferences.GameConfig;
 import com.aateam.spaceminer.tiles.TileTypes;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -39,40 +40,11 @@ public class GameScreen extends Observable implements Screen {
         map = new TileMap(GameConfig.getInstance().mapHeight, GameConfig.getInstance().mapWidth);
         nextFigureMap = new TileMap(4, 5);
         gameController = new STController(map);
+        Gdx.input.setInputProcessor(new GestureDetector(new STGestureListener(gameController)));
         touchPosition = new Vector3();
         nextFigure = Figure.createFigure(FigureTypes.getRandom());
         lastDropTime = System.currentTimeMillis();
         spawnFigure();
-    }
-
-    private void processKeyboardInput(){
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
-            if (!gameController.willOverlap(Directions.LEFT))
-                 gameController.moveFigure(Directions.LEFT);
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
-            if (!gameController.willOverlap(Directions.RIGHT)) {
-                 gameController.moveFigure(Directions.RIGHT);
-            }
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
-            if (!gameController.willOverlap(Directions.DOWN)) {
-                 gameController.moveFigure(Directions.DOWN);
-            }
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-            if(gameController.willRotate(false)) {
-                gameController.rotate(false);
-            }
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-            if (gameController.willRotate(true)) {
-                gameController.rotate(true);
-            }
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-            spawnFigure();
-        }
     }
 
     private void processTouchInput() {
