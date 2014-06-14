@@ -2,16 +2,20 @@ package com.aateam.spaceminer.game.input;
 
 import com.aateam.spaceminer.game.Directions;
 import com.aateam.spaceminer.game.STController;
+import com.aateam.spaceminer.preferences.GameConfig;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
-/**
- * Created by Lux on 13.06.2014.
- */
-public class STGestureListener extends STInputListener implements GestureDetector.GestureListener {
+public class STGameFieldGestureListener extends STInputListener implements GestureDetector.GestureListener {
 
-    public STGestureListener(STController controller) {
-        super(controller);
+    private Vector3 touchPosition;
+
+    public STGameFieldGestureListener(STController controller, OrthographicCamera camera) {
+        super(controller, camera);
+        touchPosition = new Vector3();
     }
 
     @Override
@@ -46,6 +50,17 @@ public class STGestureListener extends STInputListener implements GestureDetecto
 
     @Override
     public boolean pan(float x, float y, float deltaX, float deltaY) {
+        touchPosition.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+        camera.unproject(touchPosition);
+        final int scaledX = (int) (touchPosition.x / GameConfig.getInstance().blockSize);
+        if (scaledX > controller.getCurFigurePos().x) {
+            if (!controller.willOverlap(Directions.RIGHT))
+                controller.moveFigure(Directions.RIGHT);
+        }
+        else if (scaledX < controller.getCurFigurePos().x) {
+            if (!controller.willOverlap(Directions.LEFT))
+                controller.moveFigure(Directions.LEFT);
+        }
         return false;
     }
 

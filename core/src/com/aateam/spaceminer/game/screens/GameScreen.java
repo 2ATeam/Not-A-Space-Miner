@@ -2,7 +2,7 @@ package com.aateam.spaceminer.game.screens;
 
 import com.aateam.spaceminer.core.STGame;
 import com.aateam.spaceminer.game.*;
-import com.aateam.spaceminer.game.input.STGestureListener;
+import com.aateam.spaceminer.game.input.STGameFieldGestureListener;
 import com.aateam.spaceminer.preferences.GameConfig;
 import com.aateam.spaceminer.tiles.TileTypes;
 import com.badlogic.gdx.Gdx;
@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 
 import java.util.Observable;
 
@@ -28,7 +27,6 @@ public class GameScreen extends Observable implements Screen {
     private Figure currentFigure;
     private Figure nextFigure;
     private long lastDropTime;
-    private Vector3 touchPosition;
     private boolean isStuck = false;
     private boolean isLoosed = false;
 
@@ -40,20 +38,10 @@ public class GameScreen extends Observable implements Screen {
         map = new TileMap(GameConfig.getInstance().mapHeight, GameConfig.getInstance().mapWidth);
         nextFigureMap = new TileMap(4, 5);
         gameController = new STController(map);
-        Gdx.input.setInputProcessor(new GestureDetector(new STGestureListener(gameController)));
-        touchPosition = new Vector3();
+        Gdx.input.setInputProcessor(new GestureDetector(new STGameFieldGestureListener(gameController, camera)));
         nextFigure = Figure.createFigure(FigureTypes.getRandom());
         lastDropTime = System.currentTimeMillis();
         spawnFigure();
-    }
-
-    private void processTouchInput() {
-        if (Gdx.input.isTouched()) {
-            touchPosition.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-            camera.unproject(touchPosition);
-            final int scaledX = (int) (touchPosition.x / GameConfig.getInstance().blockSize);
-            gameController.moveFigureTo(scaledX, gameController.getCurFigurePos().y);
-        }
     }
 
     ///TODO: move this game over indication to the game over screen
@@ -103,8 +91,6 @@ public class GameScreen extends Observable implements Screen {
     public void update() {
         if (isLoosed)
             return;
-
-        processTouchInput();
 
         if (System.currentTimeMillis() - lastDropTime > game.playerStats.getSpeed()) {
             lastDropTime = System.currentTimeMillis();

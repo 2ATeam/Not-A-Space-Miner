@@ -116,6 +116,7 @@ public class STController {
     }
 
     public void moveFigure(Directions direction) {
+        if (currentFigure == null) return;
         fillMaskRegion(TilesPool.getInstance().getTile(BlockMaterials.TRANSPARENT_MATERIAL));
         translateFigurePos(direction);
         projectFigure();

@@ -10,9 +10,9 @@ import java.awt.event.KeyListener;
 /**
  * Created by Lux on 13.06.2014.
  */
-public class STKeyboardListener extends STInputListener  implements KeyListener{
+public class STGameFieldKeyboardListener extends STInputListener  implements KeyListener{
 
-    public STKeyboardListener(STController controller) {
+    public STGameFieldKeyboardListener(STController controller) {
         super(controller);
     }
 
