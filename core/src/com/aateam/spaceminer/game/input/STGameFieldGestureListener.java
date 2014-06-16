@@ -35,14 +35,15 @@ public class STGameFieldGestureListener extends STInputListener implements Gestu
 
     @Override
     public boolean fling(float velocityX, float velocityY, int button) {
-        final int threshold = 900;
-        if (velocityY >= threshold) {
-            while (!controller.willOverlap(Directions.DOWN))
-                controller.moveFigure(Directions.DOWN);
-            return true;
-        } else if (velocityY <= threshold) {
+        final int threshold = 400;
+        if (velocityY <= -threshold) {  // rotation (fling up)
             if (controller.willRotate(false))
                 controller.rotate(false);
+            return true;
+        }
+        else if (velocityY >= threshold) {  // falling down (fling down)
+            while (!controller.willOverlap(Directions.DOWN))
+                controller.moveFigure(Directions.DOWN);
             return true;
         }
         return false;
@@ -51,13 +52,14 @@ public class STGameFieldGestureListener extends STInputListener implements Gestu
     @Override
     public boolean pan(float x, float y, float deltaX, float deltaY) {
         touchPosition.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-        camera.unproject(touchPosition);
-        final int scaledX = (int) (touchPosition.x / GameConfig.getInstance().blockSize);
+        camera.unproject(touchPosition); // map touch position according to current camera config.
+        final int scaledX = (int) (touchPosition.x / GameConfig.getInstance().blockSize) -
+                controller.getCurrentFigure().getColumns() / 2;
+
         if (scaledX > controller.getCurFigurePos().x) {
             if (!controller.willOverlap(Directions.RIGHT))
                 controller.moveFigure(Directions.RIGHT);
-        }
-        else if (scaledX < controller.getCurFigurePos().x) {
+        } else if (scaledX < controller.getCurFigurePos().x) {
             if (!controller.willOverlap(Directions.LEFT))
                 controller.moveFigure(Directions.LEFT);
         }

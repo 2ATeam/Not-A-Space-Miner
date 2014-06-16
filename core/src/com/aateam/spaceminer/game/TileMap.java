@@ -50,9 +50,9 @@ public class TileMap {
         --rowsAmount;
     }
     public void addRow(Tile tile){
-        map.add(0, new Tile[collsAmount]);
+        map.add(rowsAmount - 1, new Tile[collsAmount]);
         for (int i = 0; i < collsAmount; i++) {
-            map.get(0)[i] = tile;
+            map.get(rowsAmount - 1)[i] = tile;
         }
         ++rowsAmount;
     }

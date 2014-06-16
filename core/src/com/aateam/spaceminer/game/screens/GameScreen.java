@@ -53,7 +53,7 @@ public class GameScreen extends Observable implements Screen {
     private void checkLines() {
         int blocksInLine;
         int clearedLines = 0;
-        int i = map.getRowsAmount() - 1;
+        int i = 0;
         do {
             blocksInLine = 0;
             for (int j = 0; j < map.getCollsAmount(); j++) {
@@ -63,11 +63,11 @@ public class GameScreen extends Observable implements Screen {
                 gameController.clearLine(i);
                 ++clearedLines;
             }
-            else --i;
-        } while (i >= 0 && blocksInLine > 0);
+            else i++;
+        } while (i < map.getRowsAmount() && blocksInLine > 0);
         if (clearedLines > 0) {
             game.playerStats.increaseScore(clearedLines);
-            System.out.println(game.playerStats.toString());
+            Gdx.app.log("STATS", game.playerStats.toString());
         }
     }
 
