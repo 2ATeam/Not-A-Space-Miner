@@ -1,7 +1,7 @@
 package com.aateam.spaceminer.core;
 
 import com.aateam.spaceminer.game.Stats;
-import com.aateam.spaceminer.game.screens.GameScreen;
+import com.aateam.spaceminer.game.screens.MainMenuScreen;
 import com.aateam.spaceminer.preferences.GameConfig;
 import com.aateam.spaceminer.tiles.TilesPool;
 import com.badlogic.gdx.Game;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class STGame extends Game {
 
 	public SpriteBatch batch;
-    private GameScreen gameScreen;
+    private MainMenuScreen gameScreen;
     public Stats playerStats;
 
     //virtual dimensions:
@@ -22,7 +22,7 @@ public class STGame extends Game {
     @Override
 	public void create () {
 		batch = new SpriteBatch();
-        gameScreen = new GameScreen(this);
+        gameScreen = new MainMenuScreen(this);
         playerStats = new Stats();
         setScreen(gameScreen);
 	}
